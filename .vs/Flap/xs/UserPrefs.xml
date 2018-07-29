@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{CE6CA283-77C9-D9E6-9B49-784E48F362CF}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/HighscoreText.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/TapController.cs">
     <Files>
-      <File FileName="Assets/scripts/TapController.cs" Line="22" Column="22" />
+      <File FileName="Assets/scripts/TapController.cs" Line="68" Column="10" />
       <File FileName="Assets/scripts/GameManager.cs" Line="68" Column="38" />
       <File FileName="Assets/scripts/CountdownText.cs" Line="32" Column="2" />
       <File FileName="Assets/scripts/HighscoreText.cs" Line="14" Column="43" />
