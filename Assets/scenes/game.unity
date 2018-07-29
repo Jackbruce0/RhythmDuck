@@ -156,13 +156,13 @@ MonoBehaviour:
   Prefab: {fileID: 1742690929360546, guid: 78c91916e7bbf4531a582c5712cec94d, type: 2}
   poolSize: 10
   shiftSpeed: 1.4
-  spawnRate: 4
+  spawnRate: 3
   ySpawnRange:
     min: -1.4
     max: 3.4
   defaultSpawnPos: {x: 4.5, y: 0, z: 0}
   spawnImmediate: 0
-  immediateSpawnPos: {x: 0, y: 0, z: 0}
+  immediateSpawnPos: {x: 4.5, y: 0, z: 0}
   targetAscpectRatio: {x: 10, y: 16}
 --- !u!1 &130501983
 GameObject:
