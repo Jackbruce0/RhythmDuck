@@ -68,7 +68,7 @@ public class TapController : MonoBehaviour {
     void Update()
     {
         if (game.GameOver) return;
-        if (Input.GetMouseButtonDown(0)) //player taps
+        if (Input.GetMouseButtonDown(0) || Input.anyKeyDown) //player taps
         {
             tapAudio.Play();
             transform.rotation = forwardRotation; //rotate bird up
