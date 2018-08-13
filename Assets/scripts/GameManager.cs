@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviour {
     public GameObject startPage;
     public GameObject gameOverPage;
     public GameObject countdownPage;
+    public GameObject beatMaker;
     public Text scoreText;
+
+    GameObject currentBeatMaker;
 
     enum PageState 
     {
@@ -58,10 +61,12 @@ public class GameManager : MonoBehaviour {
         OnGameStarted(); //event sent to TapController
         score = 0;
         gameOver = false;
+        currentBeatMaker = Instantiate(beatMaker); //start the music
     }
 
     void OnPlayerDied()
     {
+        Destroy(currentBeatMaker); //stop the music
         gameOver = true;
         int savedScore = PlayerPrefs.GetInt("Highscore"); //created High score variable in PlayerPrefs
         if (score > savedScore) {

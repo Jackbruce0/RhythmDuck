@@ -6,6 +6,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D)) ]
@@ -16,16 +17,20 @@ public class TapController : MonoBehaviour {
     public static event PlayerDelegate OnPlayerScored;
 
     public float tapForce = 10;
+    public float minTapForce = 2;
+    public float maxTapForce = 10;
+
     public float tiltSmooth = 5;
     public Vector3 startPos;
 
     public AudioSource tapAudio;
     public AudioSource scoreAudio;
     public AudioSource dieAuidio;
-
-    Rigidbody2D rigidbody;
+    new Rigidbody2D rigidbody;
     Quaternion downRotation;
     Quaternion forwardRotation;
+
+    Stopwatch timer = new Stopwatch();
 
     GameManager game;
 
@@ -44,24 +49,39 @@ public class TapController : MonoBehaviour {
     {
         GameManager.OnGameStarted += OnGameStarted;
         GameManager.OnGameOverConfirmed += OnGameOverConfirmed;
+        BeatMaker.OnUpBeat += OnUpBeat;
+        BeatMaker.OnDownBeat += OnDownBeat;
+
     }
 
     void OnDisable()
     {
         GameManager.OnGameStarted -= OnGameStarted;
         GameManager.OnGameOverConfirmed -= OnGameOverConfirmed;
+        BeatMaker.OnUpBeat -= OnUpBeat;
+        BeatMaker.OnDownBeat -= OnDownBeat;
     } 
 
     void OnGameStarted()
     {
+        timer.Start();
         rigidbody.velocity = Vector3.zero;
         rigidbody.simulated = true;
     }
 
     void OnGameOverConfirmed()
     {
+        timer.Reset();
         transform.localPosition = startPos;
         transform.rotation = Quaternion.identity;
+    }
+
+    void OnUpBeat () { // tapForce should be max
+        tapForce = maxTapForce;
+    }
+
+    void OnDownBeat() { // tapForce should be min
+        tapForce = minTapForce;
     }
 
 
@@ -70,10 +90,7 @@ public class TapController : MonoBehaviour {
         if (game.GameOver) return;
         if (Input.GetMouseButtonDown(0) || Input.anyKeyDown) //player taps
         {
-            tapAudio.Play();
-            transform.rotation = forwardRotation; //rotate bird up
-            rigidbody.velocity = Vector3.zero;
-            rigidbody.AddForce(Vector2.up * tapForce, ForceMode2D.Force); //push bird up
+            Jump();
         }
         /* Lerp(src value, target value, time)
          * value changes from src to target over a certain time period.
@@ -100,6 +117,15 @@ public class TapController : MonoBehaviour {
             //play a sound
             dieAuidio.Play();
         }
+    }
+
+    private void Jump() {
+        tapAudio.Play();
+        transform.rotation = forwardRotation; //rotate bird up
+        rigidbody.velocity = Vector3.zero;
+
+
+        rigidbody.AddForce(Vector2.up * tapForce, ForceMode2D.Force); //push bird up
     }
 
 }
