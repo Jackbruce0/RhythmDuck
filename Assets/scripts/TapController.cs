@@ -88,6 +88,7 @@ public class TapController : MonoBehaviour {
     void Update()
     {
         if (game.GameOver) return;
+        UpdateTapForce();
         if (Input.GetMouseButtonDown(0) || Input.anyKeyDown) //player taps
         {
             Jump();
@@ -126,6 +127,12 @@ public class TapController : MonoBehaviour {
 
 
         rigidbody.AddForce(Vector2.up * tapForce, ForceMode2D.Force); //push bird up
+    }
+
+    private void UpdateTapForce() {
+        float bv = BeatMaker.GetBeatValue(); //sin function w/ time
+        float amplitude = (maxTapForce - minTapForce) / 2;
+        tapForce = amplitude * bv + amplitude + minTapForce;
     }
 
 }
