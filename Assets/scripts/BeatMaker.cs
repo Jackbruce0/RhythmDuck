@@ -1,7 +1,7 @@
 ﻿/* BeatMaker.cs
  * Author: Jack Bruce
  * Date Created: 8/12/18
- * Date Last Edited: 8/12/18
+ * Date Last Edited: 8/15/18
  * Description: Makes beats and keeps track of them to use for Jump Force control.
  */
 
@@ -83,7 +83,7 @@ public class BeatMaker : MonoBehaviour {
         }
     }
 
-    public static float GetBeatValue() {
+    public static float GetBeatValue() { // used in TapController for TapForce and Scoring
         return beatValue;
     }
     

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/* Parallaxer.cs
+ * Author: Youtube guy
+ * Date Created: Initial
+ * Date Last Edited: 8/15/18
+ * Description: Handles all parallaxed objects
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

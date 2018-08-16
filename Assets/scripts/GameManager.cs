@@ -1,4 +1,7 @@
 ﻿/* GameManager.cs
+ * Author: Youtube guy + Jack Bruce
+ * Date Created: Initial
+ * Date Last Edited: 8/15/18
  * Description: Controls game states, sets pages for 
 */
 using System.Collections;
@@ -20,6 +23,11 @@ public class GameManager : MonoBehaviour {
     public GameObject beatMaker;
     public Text scoreText;
 
+    //objs for score blips
+    public GameObject jumpScoreText;
+    public GameObject bird;
+    public Vector3 textShift = new Vector3(2,2,0);
+
     GameObject currentBeatMaker;
 
     enum PageState 
@@ -33,7 +41,7 @@ public class GameManager : MonoBehaviour {
     int score = 0;
     bool gameOver = true;
 
-    public bool GameOver { get { return gameOver; } } // What is this better than a get method?
+    public bool GameOver { get { return gameOver; } } // What is this? better than a get method?
     public int Score { get { return score; }}
 
     void Awake() 
@@ -46,6 +54,7 @@ public class GameManager : MonoBehaviour {
         CountdownText.OnCountdownFinished += OnCountdownFinished;
         TapController.OnPlayerDied += OnPlayerDied;
         TapController.OnPlayerScored += OnPlayerScored;
+        ScoreManager.OnRhythmScore += OnRhythmScore;
     }
 
     void OnDisable() //-= means unsubscribe
@@ -53,6 +62,7 @@ public class GameManager : MonoBehaviour {
         CountdownText.OnCountdownFinished -= OnCountdownFinished;
         TapController.OnPlayerDied -= OnPlayerDied;
         TapController.OnPlayerScored -= OnPlayerScored;
+        ScoreManager.OnRhythmScore -= OnRhythmScore;
     }
 
     void OnCountdownFinished()
@@ -81,6 +91,21 @@ public class GameManager : MonoBehaviour {
         scoreText.text = score.ToString();
     }
 
+    // For text blips
+    void OnRhythmScore()
+    {
+        int jumpScore = ScoreManager.GetJumpScore();
+        score += jumpScore;
+        scoreText.text = score.ToString();
+        // text blips for instant score
+        GameObject currentJScore = Instantiate(jumpScoreText, bird.transform);
+        currentJScore.transform.position += textShift;
+        currentJScore.GetComponent<UnityEngine.UI.Text>().text = jumpScore.ToString(); //might have to use get child from textObj
+        //yield return new WaitForSeconds(2);
+        //Destroy(currentJScore);
+    }
+
+    //
 
     void SetPageState(PageState state)
     {
@@ -123,6 +148,5 @@ public class GameManager : MonoBehaviour {
         //activated when play button is hit
         SetPageState(PageState.Countdown);
     }
-
-	
+    	
 }

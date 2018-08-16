@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{CE6CA283-77C9-D9E6-9B49-784E48F362CF}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/BeatMaker.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/ScoreManager.cs">
     <Files>
-      <File FileName="Assets/scripts/TapController.cs" Line="135" Column="60" />
-      <File FileName="Assets/scripts/GameManager.cs" Line="36" Column="21" />
+      <File FileName="Assets/scripts/ScoreManager.cs" Line="41" Column="49" />
+      <File FileName="Assets/scripts/TapController.cs" Line="101" Column="1" />
       <File FileName="Assets/scripts/HighscoreText.cs" Line="14" Column="43" />
-      <File FileName="Assets/scripts/Parallaxer.cs" Line="117" Column="74" />
-      <File FileName="Assets/scripts/CountdownText.cs" Line="10" Column="53" />
-      <File FileName="Assets/scripts/ScoreText.cs" Line="13" Column="1" />
-      <File FileName="Assets/scripts/BeatMaker.cs" Line="20" Column="52" />
+      <File FileName="Assets/scripts/Parallaxer.cs" Line="5" Column="47" />
+      <File FileName="Assets/scripts/BeatMaker.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/ScoreText.cs" Line="13" Column="41" />
+      <File FileName="Assets/scripts/GameManager.cs" Line="105" Column="34" />
+      <File FileName="Assets/scripts/CountdownText.cs" Line="28" Column="9" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
