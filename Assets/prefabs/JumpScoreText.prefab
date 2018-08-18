@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224021207531851786}
   - component: {fileID: 222040562765740448}
   - component: {fileID: 114504270123228716}
+  - component: {fileID: 114053645260008272}
   m_Layer: 5
   m_Name: JumpScoreText
   m_TagString: Untagged
@@ -28,6 +29,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114053645260008272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820029024578640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20b4fd22a3d544c49a8542fc24ec513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.25
 --- !u!114 &114504270123228716
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,6 +26,7 @@ public class CountdownText : MonoBehaviour {
             yield return new WaitForSeconds(1);
         }
         OnCountdownFinished();
+
     }
 	
 }

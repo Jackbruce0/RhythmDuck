@@ -17,10 +17,10 @@ public class BeatMaker : MonoBehaviour {
     public static event Beat OnDownBeat;
 
     // 1 = downbeat, 2 = upbeat
-    List<int> whichBeat = new List<int>() { 1, 2 };
-    int beatMark = 0;
+    //List<int> whichBeat = new List<int>() { 1, 2 };
+    //int beatMark = 0;
 
-    bool timerReset = true;
+    //bool timerReset = true;
     //public float tempo; // in bpm
     private static float beatValue = 0;
     public float beatDelta = .0001f;

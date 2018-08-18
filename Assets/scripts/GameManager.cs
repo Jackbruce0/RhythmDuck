@@ -22,13 +22,15 @@ public class GameManager : MonoBehaviour {
     public GameObject countdownPage;
     public GameObject beatMaker;
     public Text scoreText;
+    GameObject currentBeatMaker;
 
     //objs for score blips
     public GameObject jumpScoreText;
     public GameObject bird;
     public Vector3 textShift = new Vector3(2,2,0);
+    LinkedList<GameObject> textList = new LinkedList<GameObject>();
+    public Canvas canvas;
 
-    GameObject currentBeatMaker;
 
     enum PageState 
     {
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour {
         GameOver,
         Countdown
     }
-
+      
     int score = 0;
     bool gameOver = true;
 
@@ -95,15 +97,15 @@ public class GameManager : MonoBehaviour {
     void OnRhythmScore()
     {
         int jumpScore = ScoreManager.GetJumpScore();
+        string jumpScoreString = ScoreManager.GetJumpScoreString();
         score += jumpScore;
         scoreText.text = score.ToString();
         // text blips for instant score
-        GameObject currentJScore = Instantiate(jumpScoreText, bird.transform);
-        currentJScore.transform.position += textShift;
-        currentJScore.GetComponent<UnityEngine.UI.Text>().text = jumpScore.ToString(); //might have to use get child from textObj
-        //yield return new WaitForSeconds(2);
-        //Destroy(currentJScore);
+        textList.AddFirst(Instantiate(jumpScoreText, bird.transform.position + textShift, Quaternion.identity, canvas.transform));
+        textList.First.Value.GetComponent<UnityEngine.UI.Text>().text = jumpScoreString; //might have to use get child from textObj
+        //ScoreBlips.cs will handle destroying and positition
     }
+
 
     //
 

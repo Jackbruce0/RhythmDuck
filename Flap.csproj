@@ -321,6 +321,7 @@
     <Compile Include="Assets\scripts\GameManager.cs" />
     <Compile Include="Assets\scripts\HighscoreText.cs" />
     <Compile Include="Assets\scripts\Parallaxer.cs" />
+    <Compile Include="Assets\scripts\ScoreBlips.cs" />
     <Compile Include="Assets\scripts\ScoreManager.cs" />
     <Compile Include="Assets\scripts\ScoreText.cs" />
     <Compile Include="Assets\scripts\TapController.cs" />
